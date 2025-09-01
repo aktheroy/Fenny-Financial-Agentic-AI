@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Chat - AI Assistant</title>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
+
+  <link rel="stylesheet" href="../static/css/background.css" />
+  <link rel="stylesheet" href="../static/css/ChatContainer.css" />
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="currencies-container" id="currencies-container"></div>
+
+  <!-- Chat Container -->
+  <div class="fenny-container">
+    <div class="fenny-card">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="header-left">
+          <i class="fa-solid fa-brain fa-beat header-icon" aria-hidden="true"></i>
+          <div class="header-titles">
+            <h1>Fenny</h1>
+            <p> &gt; Your Personal Financial Assistant</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <button class="header-btn" id="clear-chat-btn" title="Clear Chat">
+            <i class="fa-solid fa-eraser"></i>
+          </button>
+          <button class="header-btn" id="download-chat-btn" title="Download Chat">
+            <i class="fa-solid fa-download"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="chat-messages" id="chat-messages">
+        <!-- Messages will appear here -->
+      </div>
+
+      <!-- Input Container -->
+      <div class="input-container">
+        <div class="message-input-container">
+          <div class="message-input">
+            <textarea id="user-input" placeholder="How can I help you today?" rows="1"></textarea>
+          </div>
+          <div class="input-actions">
+            <div class="left-actions">
+              <button class="action-btn" id="attach-btn" title="Attach file">
+                <i class="fa-solid fa-square-plus"></i>
+              </button>
+              <div class="action-divider"></div>
+              <a href="https://github.com/aktheroy" class="social-btn" target="_blank" title="GitHub">
+                <i class="fab fa-github-square"></i>
+              </a>
+              <a href="https://linkedin.com/in/aktheroy" class="social-btn" target="_blank" title="LinkedIn">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a href="/static/resume.pdf" class="social-btn" target="_blank" title="Download Resume">
+                <i class="fa-solid fa-floppy-disk"></i>
+              </a>
+            </div>
+            <div class="right-actions">
+              <select class="model-select">
+                <option value="fenny">Financial Advisor</option>
+                <option value="george">Sponsorship Advisor</option>
+                <option value="kiskina">Tax Advisor</option>
+              </select>
+              <button id="send-btn" class="send-btn" title="Send">
+                <i class="fa-solid fa-square-arrow-up-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="../static/js/background.js" defer></script>
+<script src="../static/js/ChatContainer.js" defer></script>
+
+</body>
+</html>
