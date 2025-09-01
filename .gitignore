@@ -1,0 +1,75 @@
+# Environment and configuration files
+.env
+.env.local
+.env.production
+.env.development
+.venv
+
+pyvenv.cfg
+.envrc
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python build/development artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs and databases
+*.log
+logs/
+*.sqlite3
+*.db
+chroma_db/
+vector_store/
+
+# Notebooks (optional)
+.ipynb_checkpoints/
+
+# OS metadata
+Thumbs.db
+
+# Package managers
+node_modules/  # If using frontend components
+
+# Compression artifacts
+*.gz
+*.tar
+*.zip
+
+# Temporary files
+*.tmp
+*.temp
+
+# Project-specific ignores (customize these)
+data/processed/
+data/raw/        # If containing large/sensitive datasets
+models/          # If containing large model files
+*.pdf            # If processing PDFs locally
+documents/       # Local document cache for RAG
