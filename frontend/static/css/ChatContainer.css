@@ -44,7 +44,7 @@ body {
   height: min(80vh, 800px);
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
-  border-radius: 32px;
+  border-radius: 22px;
   border: 2px solid var(--glass-bg);
   display: flex;
   flex-direction: column;
@@ -139,7 +139,7 @@ body {
   position: relative;
   max-width: 85%;
   padding: 14px 18px 24px;
-  border-radius: 18px;
+  border-radius: 22px;
   line-height: 1.5;
   font-size: 1rem;  /* Smaller base font size */
   margin-bottom: 8px;
@@ -183,7 +183,7 @@ body {
   background: #0570ebc6;
   border: 2px solid rgba(255, 255, 255, 0.15);
   color: var(--text-color);
-  border-radius: 18px;
+  border-radius: 22px;
   border-bottom-right-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -206,7 +206,7 @@ body {
 
 .message-input-container {
   background: var(--input-bg);
-  border-radius: 24px;
+  border-radius: 22px;
   padding: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.348);
   contain: layout;
