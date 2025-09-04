@@ -1,10 +1,18 @@
 import os
+import platform
 from pathlib import Path
 from llama_cpp import Llama
 from typing import Dict, Any, List, Optional
 import logging
 
+# Set Metal support for Apple Silicon before importing llama_cpp
+if platform.system() == "Darwin":
+    os.environ["LLAMA_METAL"] = "1"  # Enable Metal backend
+
+from llama_cpp import Llama  # Import after setting env vars
+
 logger = logging.getLogger(__name__)
+
 
 
 class FinanceLLM:
@@ -38,7 +46,6 @@ class FinanceLLM:
         if not self.model_path or not os.path.exists(self.model_path):
             try:
                 from .download_model import download_finance_model
-
                 self.model_path = download_finance_model()
             except Exception as e:
                 logger.error(f"Failed to download model: {str(e)}")
@@ -61,12 +68,10 @@ class FinanceLLM:
             # CHANGED: Increased GPU layers for better Apple Silicon performance with Q4 quantization
             self.model = Llama(
                 model_path=self.model_path,
-                n_gpu_layers=2,  # Increased from 1 for Q4_K_M (better balance for Apple Silicon)
-                n_ctx=2048,
+                n_gpu_layers=35,
+                n_ctx=4096,
                 n_threads=os.cpu_count(),
                 verbose=False,
-                rope_freq_base=10000,
-                rope_freq_scale=1,
             )
             logger.info("Finance LLM initialized successfully")
         except Exception as e:
