@@ -1,6 +1,6 @@
 import os
-from pydantic_settings import BaseSettings
-from typing import List
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import List, Optional
 
 
 class Settings(BaseSettings):
@@ -23,8 +23,13 @@ class Settings(BaseSettings):
     # Session settings
     SESSION_EXPIRY_HOURS: int = 24
 
-    class Config:
-        env_file = ".env"
+    # Currency API settings
+    EXCHANGE_RATE_API_KEY: str = ""
+
+    # Model configuration
+    model_config = SettingsConfigDict(
+        env_file=".env", env_file_encoding="utf-8", extra="ignore"
+    )
 
 
 settings = Settings()
