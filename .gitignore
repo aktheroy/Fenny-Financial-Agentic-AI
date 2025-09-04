@@ -66,6 +66,7 @@ node_modules/  # If using frontend components
 # Temporary files
 *.tmp
 *.temp
+*.gguf
 
 # Project-specific ignores (customize these)
 data/processed/
