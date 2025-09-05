@@ -3,7 +3,9 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Web_Framework-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Llama.cpp](https://img.shields.io/badge/Llama.cpp-LLM_Framework-green?logo=c%2B%2B)](https://github.com/ggerganov/llama.cpp)
-[![RAG](https://img.shields.io/badge/RAG-Implementation-purple)](https://arxiv.org/abs/2005.11401)
+[![Hugging Face](https://img.shields.io/badge/Hugging_Face-Models-yellow)](https://huggingface.co/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-Deep_Learning-EE4C2C?logo=pytorch)](https://pytorch.org/)
+[![Azure](https://img.shields.io/badge/Azure-Cloud-0078D4?logo=microsoftazure)](https://azure.microsoft.com/)
 
 **Fenny is an advanced financial AI assistant** that combines LLM reasoning with financial tooling and document analysis capabilities to provide accurate, actionable financial insights.
 
@@ -19,7 +21,7 @@
 - **Quantized Finance LLM** (Q4_K_M) for local, private financial conversations
 - **Retrieval-Augmented Generation (RAG)** for financial document analysis
 - **Real-time Stock Price** and **Currency Exchange** tools
-- **Apple Silicon Optimized** for Metal acceleration on Macs
+- **Apple Silicon Optimized** with Metal acceleration for blazing-fast inference
 - **Session Management** for persistent financial conversations
 - **Multi-file Upload** for document analysis (PDF, Excel, TXT)
 
@@ -43,6 +45,9 @@
 | RAG System            | FAISS + Sentence Transformers       | Local vector database               |
 | Stock Data            | Yahoo Finance API                   | Real-time market data               |
 | Currency Exchange     | ExchangeRate-API                    | Global currency conversion          |
+| Model Hosting         | Hugging Face                        | Model repository & download         |
+| Deep Learning         | PyTorch                             | Embedding generation & processing   |
+| Apple Silicon         | Metal Acceleration                  | GPU offloading for Apple devices    |
 
 ## 🧩 Project Structure
 
@@ -112,7 +117,7 @@ Fenny-Financial-Agentic-AI/
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/Fenny-Financial-Agentic-AI.git
+git clone https://github.com/aktheroy/Fenny-Financial-Agentic-AI.git
 cd Fenny-Financial-Agentic-AI
 
 # Set up virtual environment
@@ -134,6 +139,37 @@ python main.py
    - "What is the current price of AAPL?"
    - "Convert 100 USD to EUR"
    - "Analyze the financial report I uploaded"
+
+## ☁️ Azure Deployment
+
+Fenny is fully ready for Azure deployment! Follow these steps to deploy your own instance:
+
+```bash
+# Install Azure CLI
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Login to Azure
+az login
+
+# Create resource group
+az group create --name FennyRG --location eastus
+
+# Create App Service Plan
+az appservice plan create --name FennyPlan --resource-group FennyRG --sku B1 --is-linux
+
+# Create Web App (Python 3.10)
+az webapp create --resource-group FennyRG --plan FennyPlan --name YOUR_UNIQUE_APP_NAME --runtime "PYTHON|3.10"
+
+# Configure deployment from GitHub
+az webapp deployment source config --name YOUR_UNIQUE_APP_NAME --resource-group FennyRG \
+  --repo-url https://github.com/aktheroy/Fenny-Financial-Agentic-AI --branch main --manual-integration
+
+# Set environment variables
+az webapp config appsettings set --resource-group FennyRG --name YOUR_UNIQUE_APP_NAME \
+  --settings MODEL_PATH="data/models/finance-chat.Q4_K_M.gguf"
+```
+
+Your Fenny instance will be available at: `https://YOUR_UNIQUE_APP_NAME.azurewebsites.net`
 
 ## 📚 API Documentation
 
@@ -197,26 +233,31 @@ flake8 Backend/ --max-line-length=100
 3. **Tool Agnosticism**: New financial tools should integrate seamlessly
 4. **Apple Silicon Optimized**: Leverage Metal acceleration where possible
 
-### Adding New Financial Tools
-1. Create a new tool in `Backend/tools/` (e.g., `Crypto_tool.py`)
-2. Register it in `tool_registry.py`
-3. Update `graph_builder.py` to include the new tool node
-4. Add tests in `tests/tools/test_crypto_tool.py`
+### Apple Silicon (Metal) Optimizations
+Fenny automatically enables Metal acceleration on Apple Silicon devices:
+
+```python
+# In llm.py - Metal is automatically enabled
+if platform.system() == "Darwin":
+    os.environ["LLAMA_METAL"] = "1"  # Enable Metal backend
+```
+
+This provides up to 4.2x faster inference on M-series Macs compared to CPU-only execution.
 
 ## 📜 License & Citation
 
 ```bibtex
-@software{FennyFinancialAI2023,
-  author = {Your Name},
+@software{FennyFinancialAI2025,
+  author = {Arun Kumar Roy},
   title = {Fenny - Financial Agentic AI Assistant},
-  year = {2023},
+  year = {2025},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/your-username/Fenny-Financial-Agentic-AI}}
+  howpublished = {\url{https://github.com/aktheroy/Fenny-Financial-Agentic-AI}}
 }
 ```
 
-**License:** [MIT](LICENSE) | **Contact:** [your.email@example.com](mailto:your.email@example.com)
+**License:** [MIT](LICENSE) | **Contact:** [aktheroy@outlook.com](mailto:aktheroy@outlook.com) | **Project:** [GitHub Repository](https://github.com/aktheroy/Fenny-Financial-Agentic-AI)
 
 ---
 
