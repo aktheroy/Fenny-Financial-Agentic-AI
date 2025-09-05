@@ -1,4 +1,4 @@
-# 📈 Fenny - Financial Agentic AI Assistant
+# 💰 Fenny - Financial Agentic AI Assistant
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Web_Framework-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
